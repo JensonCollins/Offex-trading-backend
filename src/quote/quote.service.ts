@@ -9,9 +9,9 @@ export class QuoteService {
     inputAmount: number,
   ) {
     const priceSources = [
-      { name: 'Uniswap V3', url: 'ws://localhost:3008' },
-      { name: 'Sushiswap', url: 'ws://localhost:3008' },
-      { name: '1 inch', url: 'ws://localhost:3008' },
+      { name: 'Uniswap V3', url: 'ws://chainway-backend.onrender.com' },
+      { name: 'Sushiswap', url: 'ws://chainway-backend.onrender.com' },
+      { name: '1 inch', url: 'ws://chainway-backend.onrender.com' },
     ];
 
     const offersPromises = priceSources.map(async (source) => {
