@@ -21,24 +21,25 @@ export class QuoteGateway {
   handleQuotes(@MessageBody() payload: any): WsResponse<unknown> {
     const parsedPayload: Payload = JSON.parse(payload);
 
-    let price = 1000;
-    switch (parsedPayload.source) {
-      case 'Uniswap V3':
-        price = 1100;
-        break;
-
-      case 'Sushiswap':
-        price = 1200;
-        break;
-
-      case '1 inch':
-        price = 1300;
-        break;
+    if (parsedPayload.inputAsset === "ETH" && parsedPayload.outputAsset === "DAI") {
+      return {
+        event: 'quotes',
+        data: this.getRandomNumber(3600, 3800),
+      };
+    } else if (parsedPayload.inputAsset === "DAI" && parsedPayload.outputAsset === "ETH") {
+      return {
+        event: 'quotes',
+        data: this.getRandomNumber(25, 35) / 100000,
+      };
+    } else {
+      return {
+        event: 'quotes',
+        data: this.getRandomNumber(101, 105) / 100,
+      };
     }
+  }
 
-    return {
-      event: 'quotes',
-      data: price,
-    };
+  getRandomNumber(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
