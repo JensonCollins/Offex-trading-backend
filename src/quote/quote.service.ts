@@ -7,7 +7,7 @@ export class QuoteService {
     inputAsset: string,
     outputAsset: string,
     inputAmount: number,
-  ) {
+  ): Promise<{ price: number, source: string } | null> {
     const priceSources = [
       { name: 'Uniswap V3', url: 'wss://chainway-backend.onrender.com' },
       { name: 'Sushiswap', url: 'wss://chainway-backend.onrender.com' },
