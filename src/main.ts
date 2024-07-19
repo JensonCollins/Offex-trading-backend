@@ -8,7 +8,7 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('Testing gateway')
+    .setTitle('Testing gateway 1')
     .setDescription('The Chainway API description')
     .setVersion('1.0')
     .build();
